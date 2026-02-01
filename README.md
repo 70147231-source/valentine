@@ -88,7 +88,7 @@ noBtn.addEventListener("mouseover", () => {
 yesBtn.addEventListener("click", () => {
     document.body.innerHTML = `
         <h1>Yayyyy 💖🥰<br>You are my Valentine  usi my love❤️</h1>
-        <p style="font-size:22px;color:#800040;">Made with love 💕</p>
+        <p style="font-size:22px;color:#800040;"> pglu 💕</p>
     `;
 });
 
