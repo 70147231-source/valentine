@@ -64,20 +64,22 @@ button {
 
 <body>
 
-<h1> USMAN Will you be my Valentine? 💕</h1>
+<h1>Will you be my Valentine? 💕</h1>
 
 <button id="yes">YES ❤️</button>
 <button id="no">NO 💔</button>
 
 <!-- Romantic music -->
-<audio autoplay loop>
+<audio id="music" loop>
     <source src="https://cdn.pixabay.com/download/audio/2022/03/15/audio_78c3d61b6b.mp3" type="audio/mpeg">
 </audio>
 
 <script>
 const noBtn = document.getElementById("no");
 const yesBtn = document.getElementById("yes");
+const music = document.getElementById("music");
 
+// Move "NO" button randomly
 noBtn.addEventListener("mouseover", () => {
     const x = Math.random() * (window.innerWidth - 120);
     const y = Math.random() * (window.innerHeight - 120);
@@ -85,26 +87,31 @@ noBtn.addEventListener("mouseover", () => {
     noBtn.style.top = y + "px";
 });
 
+// Play music and show Valentine message on "YES" click
 yesBtn.addEventListener("click", () => {
+    music.play(); // start music
     document.body.innerHTML = `
-        <h1>Yayyyy 💖🥰<br>You are my Valentine  usi my love❤️</h1>
-        <p style="font-size:22px;color:#800040;"> pglu 💕</p>
+        <h1>Yayyyy 💖🥰<br>You are my Valentine ❤️</h1>
+        <p style="font-size:22px;color:#800040;">Made with love 💕</p>
     `;
+
+    // Keep floating hearts going
+    setInterval(() => {
+        const heart = document.createElement("div");
+        heart.classList.add("heart");
+        heart.innerHTML = "❤️";
+        heart.style.left = Math.random() * window.innerWidth + "px";
+        heart.style.fontSize = Math.random() * 20 + 15 + "px";
+        document.body.appendChild(heart);
+
+        setTimeout(() => heart.remove(), 6000);
+    }, 300);
 });
 
-// Create floating hearts
-setInterval(() => {
-    const heart = document.createElement("div");
-    heart.classList.add("heart");
-    heart.innerHTML = "❤️";
-    heart.style.left = Math.random() * window.innerWidth + "px";
-    heart.style.fontSize = Math.random() * 20 + 15 + "px";
-    document.body.appendChild(heart);
-
-    setTimeout(() => {
-        heart.remove();
-    }, 6000);
-}, 300);
+// Optional: start music on any first click anywhere
+document.body.addEventListener("click", () => {
+    music.play();
+}, { once: true });
 </script>
 
 </body>
